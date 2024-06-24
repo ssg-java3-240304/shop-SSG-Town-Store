@@ -15,4 +15,5 @@
         <result column="sale_price" property="sale_price"/>
         <result column="sale_status" property="saleStatus"/>
     </resultMap>
+
 </mapper>
