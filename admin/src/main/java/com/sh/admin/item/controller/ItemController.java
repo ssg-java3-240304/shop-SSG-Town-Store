@@ -12,17 +12,17 @@ public class ItemController {
 
     @GetMapping("/list")
     public String list() {
-        return "list-products";
+        return "item/list";
     }
 
     @GetMapping("/create") // 상품등록 페이지
     public String create() {
-        return "add-products";
+        return "item/create";
     }
 
     @GetMapping("/update") // 상품수정 페이지
     public String update(){
-        return "update-products";
+        return "item/update";
     }
 
 
