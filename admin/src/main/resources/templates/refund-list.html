@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -51,19 +51,6 @@
     }
   </script>
   <style>
-    /*#table_detail {*/
-    /*  !*width: 500px;*!*/
-    /*  !*text-align: left;*!*/
-    /*  border-collapse: collapse;*/
-    /*  color: #2E2E2E;*/
-    /*  border: #A4A4A4;*/
-    /*}*/
-    /*#table_detail tr:hover {*/
-    /*  background-color: #F2F2F2;*/
-    /*}*/
-    /*#table_detail .hidden_row {*/
-    /*  display: none;*/
-    /*}*/
     #basic-1 .hidden_row {
       display: none;
     }
@@ -1083,6 +1070,33 @@
                         he earns 60000 per month
                       </td>
                     </tr>
+                      <tbody>
+                      <th:block th:each="refund, stat : ${refunds}" th:object="${refund}">
+                        <tr>
+                          <td th:text="*{refundId}"></td>
+                          <td th:text="*{orderId}"></td>
+                          <td th:text="*{memberId}"></td>
+                          <td th:text="*{sumPrice}"></td>
+                          <td th:text="*{refundStatus}"></td>
+                          <td th:text="*{requestDate}"></td>
+                          <td th:text="*{lastUpdated}"></td>
+                          <td  th:text="*{refundReason}" class="list-group-numbered"></td>
+                          <td th:hideRow="|list*{refundId}|" onclick="showHideRow(this.getAttribute('hideRow'))">펼치기</td>
+                          <td>
+                            <ul class="action">
+                              <button class="btn btn-primary" type="submit">승인</button>
+                              <button class="btn btn-danger" type="submit">거부</button>
+                            </ul>
+                          </td>
+                        </tr>
+                        <tr th:id="|list*{refundId}|" class="hidden_row">
+                          <td colspan="8">
+                            <h6>설명</h6><br>
+                            <p th:text="*{description}"></p>
+                          </td>
+                        </tr>
+                      </th:block>
+                      </tbody>
                   </table>
                 </div>
               </div>
